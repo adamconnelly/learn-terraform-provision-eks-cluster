@@ -24,6 +24,10 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = ">= 2.0.1"
     }
+
+    spacelift = {
+      source = "spacelift.dev/spacelift-io/spacelift"
+    }
   }
 
   required_version = ">= 0.14"
