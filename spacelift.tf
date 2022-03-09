@@ -9,3 +9,10 @@ resource "spacelift_environment_variable" "ireland-kubeconfig" {
   value      = local.cluster_name
   write_only = false
 }
+
+resource "spacelift_environment_variable" "ireland-kubeconfig" {
+  context_id = spacelift_context.k8s-testing.id
+  name       = "EKS_REGION"
+  value      = var.region
+  write_only = false
+}
