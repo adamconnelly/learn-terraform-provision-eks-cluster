@@ -37,7 +37,6 @@ module "eks" {
       desired_capacity = 1
       min_capacity     = 1
       max_capacity     = 3
-      additional_tags  = local.tags
 
       instance_types = ["t3.small"]
       capacity_type  = "ON_DEMAND"
