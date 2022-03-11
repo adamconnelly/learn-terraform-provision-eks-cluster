@@ -32,6 +32,28 @@ module "eks" {
     },
   ]
 
+  node_groups = {
+    containerd = {
+      desired_capacity = 1
+      min_capacity     = 1
+      max_capacity     = 3
+      additional_tags  = local.tags
+
+      instance_types = ["t3.small"]
+      capacity_type  = "ON_DEMAND"
+
+      update_config = {
+        max_unavailable_percentage = 50
+      }
+
+      create_launch_template = true
+      ami_type               = "AL2_x86_64"
+      bootstrap_env = {
+        CONTAINER_RUNTIME = "containerd"
+      }
+    }
+  }
+
   map_roles = [
     {
       rolearn  = data.aws_iam_role.admin.arn
